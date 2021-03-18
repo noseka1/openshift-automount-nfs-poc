@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs-server
+  template:
+    metadata:
+      labels:
+        app: nfs-server
+    spec:
+      containers:
+      - name: nfs-server
+        image: quay.io/noseka1/openshift-toolbox:basic
+        imagePullPolicy: Always
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: init
+          mountPath: /toolbox
+        - name: home
+          mountPath: /home/toolbox
+      serviceAccountName: nfs-server
+      volumes:
+      - name: init
+        configMap:
+          name: nfs-server-init
+      - name: home
+        persistentVolumeClaim:
+          claimName: nfs-server-home

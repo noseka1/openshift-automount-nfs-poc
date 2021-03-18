@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: automount-nfs-poc
+
+configMapGenerator:
+- name: nfs-server-init
+  files:
+  - init.sh
+
+resources:
+- automount-nfs-poc-ns.yaml
+- nfs-server-deploy.yaml
+- nfs-server-home-pvc.yaml
+- nfs-server-sa.yaml
+- nfs-server-scc-rolebinding.yaml
+- nfs-server-scc-role.yaml
+- nfs-server-svc.yaml

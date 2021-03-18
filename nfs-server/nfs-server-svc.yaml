@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nfs-server
+spec:
+  clusterIP: None
+  selector:
+    app: nfs-server
