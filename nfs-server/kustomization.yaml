@@ -9,7 +9,6 @@ configMapGenerator:
   - init.sh
 
 resources:
-- automount-nfs-poc-ns.yaml
 - nfs-server-deploy.yaml
 - nfs-server-home-pvc.yaml
 - nfs-server-sa.yaml
