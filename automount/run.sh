@@ -7,8 +7,10 @@ dnf install autofs nfs-utils -y
 source /etc/sysconfig/autofs
 export USE_MISC_DEVICE
 
+mkdir -p /host/var/mnt/automount
+
 # Create automount configuration
-echo '/host/var/mnt /etc/extra.nfs' > /etc/auto.master.d/extra.autofs
+echo '/host/var/mnt/automount /etc/extra.nfs' > /etc/auto.master.d/extra.autofs
 echo '* -rw nfs-server:/exports/&' > /etc/extra.nfs
 
 # Start nfs daemons
@@ -26,7 +28,7 @@ trap '
   trap - SIGTERM && kill -- -$$
 
   echo Trying to unmount volumes /host/var/mnt/*
-  umount /host/var/mnt/*
+  umount /host/var/mnt/automount/*
   echo Volumes successfully unmounted
   ' EXIT
 
