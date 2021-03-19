@@ -17,7 +17,7 @@ for CITY in dallas tucson sandiego; do
   # Create exported directory if it doesn't exit
   mkdir -p /exports/$CITY
   # Add the directory to the list of exported dirs
-  echo "/exports/$CITY *(rw,async,root_squash)" > /etc/exports.d/$CITY.exports
+  echo "/exports/$CITY *(rw,fsid=0,async,root_squash)" > /etc/exports.d/$CITY.exports
 done
 
 # Export city directory via nfs
