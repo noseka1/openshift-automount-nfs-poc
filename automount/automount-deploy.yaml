@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: automount
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: automount
+  template:
+    metadata:
+      labels:
+        app: automount
+    spec:
+      containers:
+      - name: automount
+        image: quay.io/noseka1/openshift-toolbox:basic
+        imagePullPolicy: Always
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: run
+          mountPath: /toolbox
+        - name: host
+          mountPath: /host
+          # Bidirectional mount propagation required
+          mountPropagation: Bidirectional
+      serviceAccountName: automount
+      # For automount to work hostPID=true is required
+      hostPID: true
+      volumes:
+      - name: run
+        configMap:
+          name: automount-run
+      - name: host
+        hostPath:
+          path: /

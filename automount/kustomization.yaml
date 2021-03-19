@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: automount-nfs-poc
+
+configMapGenerator:
+- name: automount-run
+  files:
+  - run.sh
+
+resources:
+- automount-deploy.yaml
+- automount-sa.yaml
+- automount-scc-rolebinding.yaml
+- automount-scc-role.yaml
