@@ -16,6 +16,8 @@ mount -t nfsd nfds /proc/fs/nfsd
 for CITY in dallas tucson sandiego; do
   # Create exported directory if it doesn't exit
   mkdir -p /exports/$CITY
+  # allow wide open access
+  chmod 777 /exports/$CITY
   # Add the directory to the list of exported dirs
   echo "/exports/$CITY *(rw,fsid=0,async,root_squash)" > /etc/exports.d/$CITY.exports
 done
