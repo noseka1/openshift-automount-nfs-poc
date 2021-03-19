@@ -21,13 +21,13 @@ spec:
         volumeMounts:
         - name: init
           mountPath: /toolbox
-        - name: home
-          mountPath: /home/toolbox
+        - name: exports
+          mountPath: /exports
       serviceAccountName: nfs-server
       volumes:
       - name: init
         configMap:
           name: nfs-server-init
-      - name: home
+      - name: exports
         persistentVolumeClaim:
-          claimName: nfs-server-home
+          claimName: nfs-server-exports

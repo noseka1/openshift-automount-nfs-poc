@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-server-home
+  name: nfs-server-exports
 spec:
   accessModes:
   - ReadWriteOnce

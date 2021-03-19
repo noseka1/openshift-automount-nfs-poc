@@ -10,7 +10,7 @@ configMapGenerator:
 
 resources:
 - nfs-server-deploy.yaml
-- nfs-server-home-pvc.yaml
+- nfs-server-exports-pvc.yaml
 - nfs-server-sa.yaml
 - nfs-server-scc-rolebinding.yaml
 - nfs-server-scc-role.yaml

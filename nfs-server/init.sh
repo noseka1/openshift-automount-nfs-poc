@@ -12,8 +12,15 @@ mount -t nfsd nfds /proc/fs/nfsd
 /usr/sbin/rpc.nfsd -G 10 -N 2 -V 3
 /usr/sbin/rpc.statd --no-notify
 
-# Export home directory via nfs
-echo '/home/toolbox *(rw,async,no_root_squash)' > /etc/exports.d/toolbox.exports
+# Create exports
+for CITY in dallas tucson sandiego; do
+  # Create exported directory if it doesn't exit
+  mkdir -p /exports/$CITY
+  # Add the directory to the list of exported dirs
+  echo "/exports/$CITY *(rw,async,root_squash)" > /etc/exports.d/$CITY.exports
+done
+
+# Export city directory via nfs
 exportfs -a
 
 # Show current nfs exports
