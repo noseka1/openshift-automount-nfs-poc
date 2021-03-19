@@ -18,6 +18,18 @@ echo '* -rw nfs-server:/exports/&' > /etc/extra.nfs
 /usr/sbin/rpc.statd
 /usr/bin/rpcbind -w
 
+# From the Kubernetes docs:
+# Any volume mounts created by containers in pods must be destroyed (unmounted) by the containers on termination
+# Link: https://kubernetes.io/docs/concepts/storage/volumes/#mount-propagation
+trap '
+  # kill all child processes
+  trap - SIGTERM && kill -- -$$
+
+  echo Trying to unmount volumes /host/var/mnt/*
+  umount /host/var/mnt/*
+  echo Volumes successfully unmounted
+  ' EXIT
+
 # Start the autofs
 automount \
   --foreground \
