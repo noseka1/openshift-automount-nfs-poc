@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Install automounter and nfs rpms
-dnf install autofs nfs-utils -y
+dnf install --assumeyes \
+  autofs \
+  nfs-utils \
+  openldap-clients
 
 # Export settings as if autofs would be started by systemd
 source /etc/sysconfig/autofs
