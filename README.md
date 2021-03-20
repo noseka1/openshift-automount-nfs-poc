@@ -1,6 +1,6 @@
 # openshift-automount-nfs-poc
 
-This repo uses openshift-toolbox image
+This repo uses [openshift-toolbox](https://github.com/noseka1/openshift-toolbox) image.
 
 ## Deploying POC
 
