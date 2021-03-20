@@ -42,6 +42,10 @@ $ oc apply --kustomize test-pod
 $ oc delete --kustomize namespace
 ```
 
+## TODO
+
+* Automount doesn't seem to unmount volumes after the timeout
+
 ## References
 
 * [Kubernetes Mount Propagation](https://medium.com/kokster/kubernetes-mount-propagation-5306c36a4a2d)
