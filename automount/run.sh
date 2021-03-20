@@ -6,10 +6,6 @@ dnf install --assumeyes \
   nfs-utils \
   openldap-clients # currently unused
 
-# Export settings as if autofs would be started by systemd
-source /etc/sysconfig/autofs
-export USE_MISC_DEVICE
-
 mkdir -p /host/var/mnt/automount
 
 # Create automount configuration
