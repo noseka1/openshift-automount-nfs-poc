@@ -7,6 +7,10 @@ configMapGenerator:
 - name: automount-run
   files:
   - run.sh
+- name: automount-conf
+  files:
+  - extra.autofs
+  - extra.nfs
 
 resources:
 - automount-deploy.yaml

@@ -21,6 +21,12 @@ spec:
         volumeMounts:
         - name: run
           mountPath: /toolbox
+        - name: conf
+          mountPath: /etc/auto.master.d/extra.autofs
+          subPath: extra.autofs
+        - name: conf
+          mountPath: /etc/extra.nfs
+          subPath: extra.nfs
         - name: host
           mountPath: /host
           # Bidirectional mount propagation is required
@@ -34,6 +40,9 @@ spec:
       - name: run
         configMap:
           name: automount-run
+      - name: conf
+        configMap:
+          name: automount-conf
       - name: host
         hostPath:
           path: /
