@@ -23,7 +23,7 @@ spec:
           mountPath: /toolbox
         - name: host
           mountPath: /host
-          # Bidirectional mount propagation required
+          # Bidirectional mount propagation is required
           mountPropagation: Bidirectional
       serviceAccountName: automount
       # For automount to work hostPID=true is required
