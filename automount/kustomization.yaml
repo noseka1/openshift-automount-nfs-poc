@@ -13,7 +13,7 @@ configMapGenerator:
   - extra.nfs
 
 resources:
-- automount-deploy.yaml
+- automount-ds.yaml
 - automount-sa.yaml
 - automount-scc-rolebinding.yaml
 - automount-scc-role.yaml

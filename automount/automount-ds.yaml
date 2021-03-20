@@ -1,9 +1,8 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: automount
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: automount
@@ -36,6 +35,9 @@ spec:
       hostPID: true
       # Need to reach rpcbind on 127.0.0.1:111
       hostNetwork: true
+      # Run on Linux nodes only
+      nodeSelector:
+        kubernetes.io/os: linux
       volumes:
       - name: run
         configMap:
