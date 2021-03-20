@@ -44,7 +44,7 @@ $ oc delete --kustomize namespace
 
 ## TODO
 
-* Automount doesn't seem to unmount volumes after the timeout
+* Automount doesn't seem to unmount usunsed volumes after the timeout
 
 ## References
 
