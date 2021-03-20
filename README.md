@@ -36,7 +36,7 @@ Deploy a test pod:
 $ oc apply --kustomize test-pod
 ```
 
-##Cleaning up
+## Cleaning up
 
 ```
 $ oc delete --kustomize namespace
