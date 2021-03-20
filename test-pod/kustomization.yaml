@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: automount-nfs-poc
+
+configMapGenerator:
+- name: test-pod-init
+  files:
+  - init.sh
+
+resources:
+- restricted-hostpath-scc.yaml
+- test-pod-deploy.yaml
+- test-pod-sa.yaml
+- test-pod-scc-rolebinding.yaml
+- test-pod-scc-role.yaml
