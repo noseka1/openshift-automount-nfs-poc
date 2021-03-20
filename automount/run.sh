@@ -4,7 +4,7 @@
 dnf install --assumeyes \
   autofs \
   nfs-utils \
-  openldap-clients
+  openldap-clients # currently unused
 
 # Export settings as if autofs would be started by systemd
 source /etc/sysconfig/autofs
@@ -14,29 +14,10 @@ mkdir -p /host/var/mnt/automount
 
 # Create automount configuration
 echo '/host/var/mnt/automount /etc/extra.nfs' > /etc/auto.master.d/extra.autofs
-echo '* -rw nfs-server:/exports/&' > /etc/extra.nfs
-
-# Start nfs daemons
-/usr/sbin/blkmapd
-/usr/sbin/rpc.gssd
-/usr/sbin/sm-notify
-/usr/sbin/rpc.statd
-/usr/bin/rpcbind -w
-
-# From the Kubernetes docs:
-# Any volume mounts created by containers in pods must be destroyed (unmounted) by the containers on termination
-# Link: https://kubernetes.io/docs/concepts/storage/volumes/#mount-propagation
-trap '
-  # kill all child processes
-  trap - SIGTERM && kill -- -$$
-
-  echo Trying to unmount volumes /host/var/mnt/*
-  umount /host/var/mnt/automount/*
-  echo Volumes successfully unmounted
-  ' EXIT
+echo '* -rw 10.129.2.4:/exports/&' > /etc/extra.nfs
 
 # Start the autofs
-automount \
+exec automount \
   --foreground \
   --dont-check-daemon \
   --debug

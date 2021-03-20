@@ -28,6 +28,8 @@ spec:
       serviceAccountName: automount
       # For automount to work hostPID=true is required
       hostPID: true
+      # Need to reach rpcbind on 127.0.0.1:111
+      hostNetwork: true
       volumes:
       - name: run
         configMap:
