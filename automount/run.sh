@@ -6,7 +6,7 @@ dnf install --assumeyes \
   nfs-utils \
   openldap-clients # currently unused
 
-mkdir -p /host/var/mnt/automount
+mkdir -p /mnt/automount
 
 # Start the autofs
 exec automount \

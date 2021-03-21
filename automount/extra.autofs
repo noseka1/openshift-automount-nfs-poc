@@ -1,1 +1,1 @@
-/host/var/mnt/automount /etc/extra.nfs
+/mnt/automount /etc/extra.nfs

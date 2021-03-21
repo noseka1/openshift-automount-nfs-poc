@@ -27,7 +27,7 @@ spec:
           mountPath: /etc/extra.nfs
           subPath: extra.nfs
         - name: host
-          mountPath: /host
+          mountPath: /mnt
           # Bidirectional mount propagation is required
           mountPropagation: Bidirectional
       serviceAccountName: automount
@@ -47,4 +47,4 @@ spec:
           name: automount-conf
       - name: host
         hostPath:
-          path: /
+          path: /var/mnt
