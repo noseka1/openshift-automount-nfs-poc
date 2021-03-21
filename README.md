@@ -1,4 +1,4 @@
-# openshift-automount-nfs-poc
+# Automounting NFS on OpenShift
 
 This repo uses [openshift-toolbox](https://github.com/noseka1/openshift-toolbox) image.
 
