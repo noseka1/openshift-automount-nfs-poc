@@ -1,5 +1,7 @@
 # Automounting NFS on OpenShift
 
+This *proof of concept* shows how to automount NFS shares on OpenShift.
+
 This repo uses [openshift-toolbox](https://github.com/noseka1/openshift-toolbox) image.
 
 ## Deploying POC
