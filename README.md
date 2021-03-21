@@ -6,9 +6,13 @@ This repo uses [openshift-toolbox](https://github.com/noseka1/openshift-toolbox)
 
 ## Deploying POC
 
+Create a namespace where everything else will be deployed to:
+
 ```
 $ oc apply --kustomize namespace
 ```
+
+Unless you are bringing your own NFS server, you can deploy one on OpenShift:
 
 ```
 $ oc apply --kustomize nfs-server
