@@ -4,9 +4,11 @@ This *proof of concept* shows how to automount NFS shares on OpenShift.
 
 This repo uses [openshift-toolbox](https://github.com/noseka1/openshift-toolbox) image.
 
-## Diagrams
+## Deployment overview
 
 ![Deployment overview](docs/diagrams/openshift_automount_nfs_overview.svg "Deployment overview")
+
+## Mount propagation
 
 ![Mount propagation](docs/diagrams/openshift_automount_nfs_mount_propagation.svg "Mount propagation")
 
