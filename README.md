@@ -55,6 +55,9 @@ $ oc apply --kustomize test-pod
 ```
 $ oc delete --kustomize namespace
 ```
+## Video
+
+[![How to Automount NFS on OpenShift](https://img.youtube.com/vi/QALt18puDPo/0.jpg)](http://www.youtube.com/watch?v=QALt18puDPo)
 
 ## TODO
 
